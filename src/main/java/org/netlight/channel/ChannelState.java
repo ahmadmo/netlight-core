@@ -5,6 +5,6 @@ package org.netlight.channel;
  */
 public enum ChannelState {
 
-    CONNECTED, DISCONNECTED, CONNECTION_FAILED
+    OPENED, CLOSED, OPEN_FAILURE
 
 }
