@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * @author ahmad
  */
-public abstract class AbstractRichChannelHandler extends SimpleChannelInboundHandler<Message> implements RichChannelHandler {
+public abstract class AbstractRichChannelHandler<T> extends SimpleChannelInboundHandler<T> implements RichChannelHandler {
 
     @Override
     public MessagePromise newPromise(SocketAddress remoteAddress, Message message) {
