@@ -67,13 +67,11 @@ public final class VoidMessagePromise implements MessagePromise {
 
     @Override
     public VoidMessagePromise setSuccess() {
-        fail();
         return this;
     }
 
     @Override
     public VoidMessagePromise setSuccess(boolean success) {
-        fail();
         return this;
     }
 
@@ -84,13 +82,11 @@ public final class VoidMessagePromise implements MessagePromise {
 
     @Override
     public VoidMessagePromise setFailure(Throwable cause) {
-        fail();
         return this;
     }
 
     @Override
     public VoidMessagePromise setResponse(Message response) {
-        fail();
         return this;
     }
 
