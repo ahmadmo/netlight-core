@@ -87,30 +87,33 @@ public final class DefaultMessagePromise implements MessagePromise {
     }
 
     @Override
-    public void setSuccess() {
+    public DefaultMessagePromise setSuccess() {
         setSuccess(true);
+        return this;
     }
 
     @Override
-    public void setSuccess(boolean success) {
+    public DefaultMessagePromise setSuccess(boolean success) {
         if (done.compareAndSet(false, true)) {
             this.success.set(success);
             fireOnComplete();
         }
+        return this;
     }
 
     @Override
-    public void setCancellable(boolean cancellable) {
+    public DefaultMessagePromise setCancellable(boolean cancellable) {
         if (!done.get()) {
             this.cancellable.set(cancellable);
             if (!cancellable) {
                 cancelled.set(false);
             }
         }
+        return this;
     }
 
     @Override
-    public void setFailure(Throwable cause) {
+    public DefaultMessagePromise setFailure(Throwable cause) {
         if (cause == null) {
             throw new NullPointerException("cause");
         }
@@ -119,10 +122,11 @@ public final class DefaultMessagePromise implements MessagePromise {
             this.cause.set(cause);
             fireOnComplete();
         }
+        return this;
     }
 
     @Override
-    public void setResponse(Message response) {
+    public DefaultMessagePromise setResponse(Message response) {
         if (response == null) {
             throw new NullPointerException("response");
         }
@@ -130,6 +134,7 @@ public final class DefaultMessagePromise implements MessagePromise {
             setSuccess(true);
             fireOnResponse();
         }
+        return this;
     }
 
     @Override

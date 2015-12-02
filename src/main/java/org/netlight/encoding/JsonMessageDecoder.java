@@ -7,7 +7,7 @@ import io.netty.util.internal.RecyclableArrayList;
 
 import java.util.List;
 
-import static org.netlight.encoding.StandardTextSerializers.JSON;
+import static org.netlight.encoding.StandardMessageSerializers.JSON;
 
 /**
  * @author ahmad

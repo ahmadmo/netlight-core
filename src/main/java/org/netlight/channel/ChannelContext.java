@@ -2,6 +2,7 @@ package org.netlight.channel;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import org.netlight.messaging.Message;
 import org.netlight.messaging.MessagePromise;
 
 import java.io.Serializable;
@@ -23,7 +24,19 @@ public interface ChannelContext extends Serializable {
 
     SocketAddress remoteAddress();
 
+    MessagePromise newPromise(Message message);
+
+    Collection<MessagePromise> newPromises(Collection<Message> messages);
+
+    MessagePromise voidPromise(Message message);
+
+    Collection<MessagePromise> voidPromises(Collection<Message> messages);
+
+    MessagePromise sendMessage(Message message);
+
     void sendMessage(MessagePromise promise);
+
+    Collection<MessagePromise> sendMessages0(Collection<Message> messages);
 
     void sendMessages(Collection<MessagePromise> promises);
 

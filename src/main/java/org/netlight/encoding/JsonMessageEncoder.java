@@ -9,7 +9,7 @@ import org.netlight.messaging.Message;
 import java.nio.CharBuffer;
 import java.util.List;
 
-import static org.netlight.encoding.StandardTextSerializers.JSON;
+import static org.netlight.encoding.StandardMessageSerializers.JSON;
 
 /**
  * @author ahmad

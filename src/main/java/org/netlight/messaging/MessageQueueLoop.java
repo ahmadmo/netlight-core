@@ -62,7 +62,7 @@ public final class MessageQueueLoop implements Runnable {
         }
     }
 
-    public ChannelContext getConnectionContext() {
+    public ChannelContext getChannelContext() {
         return ctx;
     }
 

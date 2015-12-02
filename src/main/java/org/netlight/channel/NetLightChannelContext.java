@@ -2,6 +2,7 @@ package org.netlight.channel;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import org.netlight.messaging.Message;
 import org.netlight.messaging.MessagePromise;
 
 import java.net.SocketAddress;
@@ -50,8 +51,38 @@ public final class NetLightChannelContext implements ChannelContext {
     }
 
     @Override
+    public MessagePromise newPromise(Message message) {
+        return channelHandler.newPromise(remoteAddress(), message);
+    }
+
+    @Override
+    public Collection<MessagePromise> newPromises(Collection<Message> messages) {
+        return channelHandler.newPromises(remoteAddress(), messages);
+    }
+
+    @Override
+    public MessagePromise voidPromise(Message message) {
+        return channelHandler.voidPromise(remoteAddress(), message);
+    }
+
+    @Override
+    public Collection<MessagePromise> voidPromises(Collection<Message> messages) {
+        return channelHandler.voidPromises(remoteAddress(), messages);
+    }
+
+    @Override
+    public MessagePromise sendMessage(Message message) {
+        return channelHandler.sendMessage(channelHandlerContext, remoteAddress(), message);
+    }
+
+    @Override
     public void sendMessage(MessagePromise promise) {
         channelHandler.sendMessage(channelHandlerContext, promise);
+    }
+
+    @Override
+    public Collection<MessagePromise> sendMessages0(Collection<Message> messages) {
+        return channelHandler.sendMessages(channelHandlerContext, remoteAddress(), messages);
     }
 
     @Override

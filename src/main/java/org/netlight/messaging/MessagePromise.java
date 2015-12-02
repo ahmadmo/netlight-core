@@ -5,15 +5,15 @@ package org.netlight.messaging;
  */
 public interface MessagePromise extends MessageFuture {
 
-    void setSuccess();
+    MessagePromise setSuccess();
 
-    void setSuccess(boolean success);
+    MessagePromise setSuccess(boolean success);
 
-    void setCancellable(boolean cancellable);
+    MessagePromise setCancellable(boolean cancellable);
 
-    void setFailure(Throwable cause);
+    MessagePromise setFailure(Throwable cause);
 
-    void setResponse(Message response);
+    MessagePromise setResponse(Message response);
 
     @Override
     MessagePromise addListener(MessageFutureListener listener);
