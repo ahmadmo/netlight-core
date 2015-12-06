@@ -1,6 +1,7 @@
 package org.netlight.messaging;
 
 import java.net.SocketAddress;
+import java.util.Objects;
 
 /**
  * @author ahmad
@@ -11,6 +12,8 @@ public final class VoidMessagePromise implements MessagePromise {
     private final SocketAddress remoteAddress;
 
     public VoidMessagePromise(Message message, SocketAddress remoteAddress) {
+        Objects.requireNonNull(message);
+        Objects.requireNonNull(remoteAddress);
         this.message = message;
         this.remoteAddress = remoteAddress;
     }

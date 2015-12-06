@@ -34,10 +34,10 @@ public interface ChannelContext extends Serializable {
 
     MessagePromise sendMessage(Message message);
 
-    void sendMessage(MessagePromise promise);
+    MessagePromise sendMessage(MessagePromise promise);
 
     Collection<MessagePromise> sendMessages0(Collection<Message> messages);
 
-    void sendMessages(Collection<MessagePromise> promises);
+    Collection<MessagePromise> sendMessages(Collection<MessagePromise> promises);
 
 }

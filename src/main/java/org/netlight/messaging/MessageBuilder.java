@@ -15,6 +15,7 @@ public final class MessageBuilder {
     private final Message message;
 
     private MessageBuilder(Message message) {
+        Objects.requireNonNull(message);
         this.message = message;
     }
 

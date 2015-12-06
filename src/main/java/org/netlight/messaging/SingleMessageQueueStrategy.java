@@ -1,5 +1,7 @@
 package org.netlight.messaging;
 
+import java.util.Objects;
+
 /**
  * @author ahmad
  */
@@ -12,6 +14,7 @@ public final class SingleMessageQueueStrategy implements MessageQueueStrategy {
     }
 
     public SingleMessageQueueStrategy(MessageQueue queue) {
+        Objects.requireNonNull(queue);
         this.queue = queue;
     }
 

@@ -17,6 +17,7 @@ public final class TcpChannelInitializer extends ChannelInitializer<Channel> {
 
     public TcpChannelInitializer(MessageEncodingProtocol messageEncodingProtocol, RichChannelHandler channelHandler) {
         Objects.requireNonNull(messageEncodingProtocol);
+        Objects.requireNonNull(channelHandler);
         this.messageEncodingProtocol = messageEncodingProtocol;
         this.channelHandler = channelHandler;
     }

@@ -2,6 +2,7 @@ package org.netlight.util;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * @author ahmad
@@ -45,6 +46,10 @@ public final class CommonUtils {
 
     public static <T> T getOrDefault(T t, T def) {
         return t == null ? def : t;
+    }
+
+    public static <T> T getOrDefault(T t, Supplier<T> defSupplier) {
+        return t == null ? defSupplier.get() : t;
     }
 
     @SuppressWarnings("unchecked")

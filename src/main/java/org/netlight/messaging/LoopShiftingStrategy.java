@@ -3,6 +3,8 @@ package org.netlight.messaging;
 import org.netlight.util.TimeProperty;
 import org.netlight.util.concurrent.PeriodicAtomicReferenceFieldUpdater;
 
+import java.util.Objects;
+
 /**
  * @author ahmad
  */
@@ -18,6 +20,7 @@ public final class LoopShiftingStrategy implements MessageQueueLoopStrategy {
     }
 
     public LoopShiftingStrategy(TimeProperty timeout) {
+        Objects.requireNonNull(timeout);
         this.timeout = timeout;
         poke = new PeriodicAtomicReferenceFieldUpdater<>(false, b -> false, timeout);
     }

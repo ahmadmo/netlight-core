@@ -6,6 +6,7 @@ import org.netlight.util.concurrent.AtomicReferenceField;
 import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -29,6 +30,8 @@ public final class DefaultMessagePromise implements MessagePromise {
     private final Lock w = lock.readLock();
 
     public DefaultMessagePromise(Message message, SocketAddress remoteAddress) {
+        Objects.requireNonNull(message);
+        Objects.requireNonNull(remoteAddress);
         this.message = message;
         this.remoteAddress = remoteAddress;
     }

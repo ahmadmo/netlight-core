@@ -23,10 +23,10 @@ public interface RichChannelHandler extends ChannelHandler {
 
     MessagePromise sendMessage(ChannelHandlerContext ctx, SocketAddress remoteAddress, Message message);
 
-    void sendMessage(ChannelHandlerContext ctx, MessagePromise promise);
+    MessagePromise sendMessage(ChannelHandlerContext ctx, MessagePromise promise);
 
     Collection<MessagePromise> sendMessages(ChannelHandlerContext ctx, SocketAddress remoteAddress, Collection<Message> messages);
 
-    void sendMessages(ChannelHandlerContext ctx, Collection<MessagePromise> promises);
+    Collection<MessagePromise> sendMessages(ChannelHandlerContext ctx, Collection<MessagePromise> promises);
 
 }

@@ -7,6 +7,7 @@ import org.netlight.messaging.MessagePromise;
 
 import java.net.SocketAddress;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * @author ahmad
@@ -20,6 +21,9 @@ public final class NetLightChannelContext implements ChannelContext {
     private final RichChannelHandler channelHandler;
 
     public NetLightChannelContext(String id, ChannelHandlerContext channelHandlerContext, RichChannelHandler channelHandler) {
+        Objects.requireNonNull(id);
+        Objects.requireNonNull(channelHandlerContext);
+        Objects.requireNonNull(channelHandler);
         this.id = id;
         this.channelHandlerContext = channelHandlerContext;
         this.channelHandler = channelHandler;
@@ -76,8 +80,8 @@ public final class NetLightChannelContext implements ChannelContext {
     }
 
     @Override
-    public void sendMessage(MessagePromise promise) {
-        channelHandler.sendMessage(channelHandlerContext, promise);
+    public MessagePromise sendMessage(MessagePromise promise) {
+        return channelHandler.sendMessage(channelHandlerContext, promise);
     }
 
     @Override
@@ -86,8 +90,8 @@ public final class NetLightChannelContext implements ChannelContext {
     }
 
     @Override
-    public void sendMessages(Collection<MessagePromise> promises) {
-        channelHandler.sendMessages(channelHandlerContext, promises);
+    public Collection<MessagePromise> sendMessages(Collection<MessagePromise> promises) {
+        return channelHandler.sendMessages(channelHandlerContext, promises);
     }
 
     @Override
